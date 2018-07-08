@@ -1,0 +1,36 @@
+spring:
+  # 默认的profile为dev，其他环境通过指定启动参数使用不同的profile，比如：
+  #   测试环境：java -jar my-spring-boot.jar --spring.profiles.active=test
+  #   生产环境：java -jar my-spring-boot.jar --spring.profiles.active=prod
+  profiles:
+      active: dev
+  #关闭banner
+  main:
+    banner-mode: "off"
+  #thymeleaf config
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false
+  #i18n config
+  messages:
+        basename: i18n/messages
+
+  http:
+    multipart:
+      maxFileSize: 500Mb #上传文件大小
+      maxRequestSize: 500Mb
+---
+#开发环境配置
+spring:
+   profiles: dev
+
+logging:
+   level:
+     com.gahui: debug
+   file: H:/WorkSpace/IDEA_WorkSpace/maven-test/log/maven-testmaven-test-log.log
+   root: ERROR
+
+server:
+  port: 8080
